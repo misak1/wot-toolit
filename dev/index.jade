@@ -1,0 +1,28 @@
+// jade -Pw index.jade & stylus -w wot.styl
+doctype html
+html
+  head
+    meta(name='viewport', content='width=device-width,user-scalable=no,initial-scale=1')
+    title WoT Beginners Toolkit
+    script(src='css-devices/devices/i2c.js', defer='')
+    script(src='css-devices/devices/PortManager.js', defer='')
+    script(src='css-devices/devices/Utility.js', defer='')
+    script(src='css-devices/devices/PCA9685.js', defer='')
+    script(src='css-devices/devices/MCP3425.js', defer='')
+    script(src='css-devices/CSSDeviceManager.js', defer='')
+    script(src='css-devices/MultiColorLED.js', defer='')
+    script(src='css-devices/Servo.js', defer='')
+    script(src='css-devices/ADC.js', defer='')
+    script(src='app.js', defer='')
+    link(rel="stylesheet" href="wot.css")
+  body
+    // <input id="slider" type="range" min="0" max="180">
+    #led(data-css-device='type:multi-color-led; port-type:i2c; port-number:0; address:0x40; pwm-pin:0,1,2; min-pulse:0; max-pulse:0.006;') LED
+    #servo(data-css-device='type:servo; port-type:i2c; port-number:0; address:0x40; pwm-pin:3; min-pulse:0.0005; max-pulse:0.0024; angle-range:180;')
+    #led01(data-css-device='type:servo; port-type:i2c; port-number:0; address:0x40; pwm-pin:4; min-pulse:0.0006; max-pulse:0.0024; angle-range:180;')
+      | SERVO
+      br
+      span#angl
+    // ADC: <input id="adc" data-css-device="type:adc; port-type:i2c; port-number:0; address:0x68;"></input>
+    script(src='jquery-1.11.3.min.js')
+    script(src='wot.js')
